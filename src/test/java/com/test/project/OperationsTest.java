@@ -1,102 +1,90 @@
 package com.test.project;
 
-import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import static org.junit.Assert.assertEquals;
+
 public class OperationsTest {
 
     private static final double DELTA = 1e-15;
+    private final Operations operations = new Operations();
 
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
 
     @Test
-    public void sum() {
-        Operations operations = new Operations();
-        int res = operations.sum(5, 4);
-        Assert.assertEquals(9, res);
+    public void checkSumReturnCorrectResult() {
+        int result = operations.sum(5, 4);
+        assertEquals(9, result);
     }
 
     @Test
-    public void sum1() {
-        Operations operations = new Operations();
-        int res1 = operations.sum(-4, 9);
-        Assert.assertEquals(5, res1);
-
+    public void checkSumReturnCorrectResult1() {
+        int result = operations.sum(-4, 9);
+        assertEquals(5, result);
     }
 
     @Test
-    public void sum2() {
-        Operations operations = new Operations();
-        int res2 = operations.sum(8, 0);
-        Assert.assertEquals(8, res2);
-
+    public void checkSumReturnCorrectResult2() {
+        int result = operations.sum(8, 0);
+        assertEquals(8, result);
     }
 
     @Test
-    public void minus() {
-        Operations operations = new Operations();
-        int res = operations.minus(192, 156);
-        Assert.assertEquals(36, res);
-
+    public void checkMinusReturnCorrectResult() {
+        int result = operations.minus(192, 156);
+        assertEquals(36, result);
     }
 
     @Test
-    public void minus1() {
-        Operations operations = new Operations();
-        int res1 = operations.minus(-4, 20);
-        Assert.assertEquals(-24, res1);
+    public void checkMinusReturnCorrectResult1() {
+        int result = operations.minus(-4, 20);
+        assertEquals(-24, result);
     }
 
     @Test
-    public void minus2() {
-        Operations operations = new Operations();
-        int res2 = operations.minus(-8, 0);
-        Assert.assertEquals(-8, res2);
+    public void checkMinusReturnCorrectResult2() {
+        int result = operations.minus(-8, 0);
+        assertEquals(-8, result);
     }
 
     @Test
-    public void multiply() {
-        Operations operations = new Operations();
-        int res = operations.multiply(10, 2);
-        Assert.assertEquals(20, res);
+    public void checkMultiplyReturnCorrectResult() {
+        int result = operations.multiply(10, 2);
+        assertEquals(20, result);
     }
 
     @Test
-    public void multiply1() {
-        Operations operations = new Operations();
-        int res1 = operations.multiply(-20, 3);
-        Assert.assertEquals(-60, res1);
+    public void checkMultiplyReturnCorrectResult1() {
+        int result = operations.multiply(-20, 3);
+        assertEquals(-60, result);
     }
 
     @Test
-    public void multiply2() {
-        Operations operations = new Operations();
-        int res2 = operations.multiply(15, 0);
-        Assert.assertEquals(0, res2);
+    public void checkMultiplyReturnCorrectResult2() {
+        int result = operations.multiply(15, 0);
+        assertEquals(0, result);
     }
 
     @Test
-    public void division() {
-        Operations operations = new Operations();
-        double res = operations.division(36, 6);
-        Assert.assertEquals(6, res, DELTA);
+    public void checkDivisionReturnCorrectResult() {
+        double result = operations.division(36, 6);
+        assertEquals(6, result, DELTA);
     }
 
     @Test
-    public void division1() {
-        Operations operations = new Operations();
-        double res1 = operations.division(-81, 9);
-        Assert.assertEquals(-9, res1, DELTA);
+    public void checkDivisionReturnCorrectResult1() {
+        double result = operations.division(-81, 9);
+        assertEquals(-9, result, DELTA);
     }
 
     @Test()
-    public void division2() {
-        Operations operations = new Operations();
-        exceptionRule.expect(ArithmeticException.class);
-        exceptionRule.expectMessage("/ by zero");
+    public void checkDivisionReturnCorrectResult2() {
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage("Деление на ноль запрещено!");
+
         operations.division(8, 0);
     }
 }

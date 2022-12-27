@@ -1,3 +1,3 @@
 # Unit Tests Project
-##Описание
-Протестированы операции сложения, вычитания, умножения и деления
+##Description
+Tested addition, subtraction, multiplication and division operations using the JUnit framework
